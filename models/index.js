@@ -8,13 +8,15 @@
  * 
  * For example : require(./models); // No need to specify the file name index.js
  */
-
-const config = require("../configs/db.config");
+const env = process.env.NODE_ENV || 'development';
+const config = require("../configs/db.config")[env];
 const Sequelize = require("sequelize");
 
 /**
  * Creating the DB connection
  */
+
+console.log(env);
 const sequelize = new Sequelize(
     config.DB,
     config.USER,
